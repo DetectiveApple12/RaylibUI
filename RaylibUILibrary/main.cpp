@@ -9,8 +9,8 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "Showcase");
 
-    InputBar name (500, 200, 400, 50, { 255, 255, 255, 255 }, { 0, 0, 0, 255 }, 20, "Username...", {200, 200, 200, 255}, 1, 5);
-    Button button (500, 400, "Click", [](void* x) {std::cout << ((InputBar*)x)->GetText() << std::endl;}, (void*)&name);
+    InputBar name(500, 200, 400, 50, { 255, 255, 255, 255 }, { 0, 0, 0, 255 }, 20, "Username...", { 200, 200, 200, 255 }, 1, 5, { 0, 0, 0, 255 });
+    Button button(500, 400, "Click", [](void* x) {std::cout << ((InputBar*)x)->GetText() << std::endl;}, (void*)&name, 400, 50);
 
     SetTargetFPS(60);
 

@@ -6,7 +6,9 @@
 class InputBar
 {
 public:
-	InputBar(int x, int y, int width = 400, int height = 50, Color background_color = {255, 255, 255, 255}, Color foreground_color = {0, 0, 0, 255}, int padding = 5, std::string placeholder = "", Color placeholderColor = {200, 200, 200, 255}, int hasBorder = 0, int borderSize = 0) : _x(x), _y(y), _w(width), _h(height), _bc(background_color), _fg(foreground_color), _padding(padding), _placeholder(placeholder), _ph(placeholderColor), _hasBorder(hasBorder), _borderSize(borderSize) {}
+	InputBar(int x, int y, int width = 400, int height = 50, Color background_color = { 255, 255, 255, 255 }, Color foreground_color = { 0, 0, 0, 255 }, int padding = 5, std::string placeholder = "", Color placeholderColor = { 200, 200, 200, 255 }, int hasBorder = 0, int borderSize = 0, Color borderColor = { 0, 0, 0, 0 })
+		: _x(x), _y(y), _w(width), _h(height), _bc(background_color), _fg(foreground_color), _padding(padding), _placeholder(placeholder), _ph(placeholderColor), _hasBorder(hasBorder), _borderSize(borderSize), _boc(borderColor)
+	{}
 	~InputBar() {}
 
 	void Input() {
@@ -37,7 +39,7 @@ public:
 
 	void Draw() {
 		if (_hasBorder == 1) {
-			DrawRectangle(_x - _borderSize, _y - _borderSize, _w + _padding * 2 + _borderSize * 2, _h + _padding * 2 + _borderSize * 2, BLACK);
+			DrawRectangle(_x - _borderSize, _y - _borderSize, _w + _padding * 2 + _borderSize * 2, _h + _padding * 2 + _borderSize * 2, _boc);
 		}
 		DrawRectangle(_x, _y, _w + _padding * 2, _h + _padding * 2, _bc);
 		int width = MeasureText(_text.c_str(), _h / 1.5);
@@ -82,7 +84,7 @@ private:
 	int _padding;
 	int _hasBorder, _borderSize;
 	std::string _placeholder;
-	Color _bc, _fg, _ph;
+	Color _bc, _fg, _ph, _boc;
 	std::string _text;
 
 };
